@@ -1,90 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package poe;
 
-import java.util.Scanner;
-
-/**
- *
- * @author lab_services_student
- */
 public class Login {
-// Constant Declarations for Username
+    // Constant Declarations for Username
         final static int NUM_UNDERSCORE=1;
-        final static String Underscore = "_";
+        final static String UNDERSCORE = "_";
     // Constant Declarations for Password
         final static int NUM_UPPERCASE=1;
         final static int NUM_DIGIT=1;
         final static int NUM_SPECIAL=1;    
-        final static String SpecialChars = "`~!@#$%^&*()_-=+[]{}\"|,<.>/?';:'";
+        final static String SPECIAL_CHARS = "`~!@#$%^&*()_-=+[]{}\"|,<.>/?';:'";
        
-public static void main(String[] args) {
-        //Other Declarations
-        Scanner in = new Scanner(System.in);
-//Username////////////////////////////////////////////////////////////////////////////////////       
-    //Output username message to user        
-        String message1 = """ 
-               Please enter your username.\n
-               Your username must contain an underscore and must not be more than 5 characters in length.
-               """; //This is a text block because the string is very long (Wingerden, 2022)
-        System.out.println(message1);
-       //To input username
-       String usernameInput =in.nextLine();  
-       
-    //Final username output messages
-    if(checkUsername(usernameInput)){//This calls the boolean method for check username
-          System.out.println("Username successfully captured");
-       }
-          else{ 
-            System.out.println("Username is not correctly formatted, please ensure that your username contains an underscore and is no more than 5 characters in length.");
-                }
 
-//Password///////////////////////////////////////////////////////////////////////////////////////
-    //Output password message to user        
-        String message2 = """ 
-               Please enter your password.\n
-               The password must meet the following criteria:\n
-               1. Must be at least 8 characters long\n
-               2. Must include a upper case letter.\n
-               3. Must include a digit.\n
-               4. Must include a special characters
-               """; //This is a text block because the string is very long (Wingerden, 2022)
-        System.out.println(message2);
-       //To input password
-       String passwordInput =in.nextLine();  
-       
-    //Final password output messages
-    if(checkPasswordComplexity(passwordInput)){//This calls the boolean method for checkpassword
-          System.out.println("Password successfully captured");
-       }
-          else{ 
-            System.out.println("Password is not correctly formatted, please ensure that the password contains at least 8 characters, a capital letter, a number and a special character.");
-                }
-//Registration message - while loop/////////////////////////////////////////////////////////
-   registerUser(in);
-//loginUser Boolean method
-//Prompt user to enter username and password to login
-    System.out.println("Please input username to login");
-    String loginusernameInput =in.nextLine();
-    System.out.println("Please input password to login");
-    String loginpasswordInput =in.nextLine();
-
-    boolean loginUser=true;
-    if (loginUser==true){
-    System.out.println("Welcome <user first name> ,<user last name> it is great to see you again.");
-        }
-    else{
-        System.out.println("Username or password incorrect, please try again");
-    }
-
-//Login Status(loginUser Boolean is called inside of this method) ///////////////////////////////////////////////////////////
-   returnLoginStatus();
-}
 
 //Method for Username - Boolean   
-    public static boolean checkUsername(String username){
+    public boolean checkUsername(String username){
         //Declations for method
         int underscore=0;
         int x;
@@ -96,7 +25,7 @@ public static void main(String[] args) {
     for(x=0;x<username.length();x++){
             char ch = username.charAt(x);
             
-            if (Underscore.indexOf(ch)!=-1){
+            if (UNDERSCORE.indexOf(ch)!=-1){
                underscore++; 
             }
         }
@@ -105,7 +34,7 @@ public static void main(String[] args) {
 }
         
 //Method for Password - Boolean   
-    public static boolean checkPasswordComplexity(String password){
+    public boolean checkPasswordComplexity(String password){
         //Delcarations for method
         int uppercase=0;
         int digit=0;
@@ -125,7 +54,7 @@ public static void main(String[] args) {
             else if (Character.isDigit(ch)){
                 digit++;
             }
-            else if (SpecialChars.indexOf(ch) !=-1){ //whatever is inside the while's braces ({}) will be executed over and over again
+            else if (SPECIAL_CHARS.indexOf(ch) !=-1){ //whatever is inside the while's braces ({}) will be executed over and over again
                 special++;
             }
         }
@@ -134,7 +63,7 @@ public static void main(String[] args) {
     }
 
 //Method for register user - String
-public static String registerUser(Scanner in){
+public String registerUser(){
 //Declarations for method
 String usernameInput = "";
 String passwordInput = ""; 
@@ -165,7 +94,7 @@ String passwordInput = "";
 return null;}
 
 //Method for loginUser - Boolean
-    public static boolean loginUser(String loginUsername,String loginPassword, Scanner in){
+    public boolean loginUser(String loginUsername,String loginPassword){
         //Declarations for method
        String username="";
        String password="";
@@ -178,7 +107,7 @@ return null;}
     }
 
 //Method for returnLoginStatus - String
-    public static String returnLoginStatus(){ 
+    public String returnLoginStatus(){ 
         String loginUsername="";
         String loginPassword="";
         String username="";
@@ -191,13 +120,5 @@ return null;}
     }
        
     return null;}
+    
 }
-
-
-/*References:
-Wingerden, M. v., 2022. Java Text Blocks. [Online] 
-Available at: https://www.baeldung.com/java-text-blocks
-[Accessed 15 April 2023].
-*/
-
-
