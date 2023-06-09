@@ -31,7 +31,7 @@ jobs:
      # Compiles classes to test 
       - name: compile classes
         working-directory: ./src/prog5121poe
-        run: javac -cp "../../testresources/junit-platform-console-standalone-1.8.2.jar"./poe/POE.java ./poe/Task.java/Login.java "../../test/poe/POETest.java" "../../test/poe/TaskTest.java" "../../test/poe/LoginTest.java" 
+        run: javac -cp "../../testresources/junit-platform-console-standalone-1.8.2.jar"./poe/POE.java ./poe/Tasks.java/Login.java "../../test/poe/POETest.java" "../../test/poe/TaskTest.java" "../../test/poe/LoginTest.java" 
 
     # list contents of src to verify that classess compiled 
       - name: List contents of src directory after compile
@@ -42,22 +42,22 @@ jobs:
        # copy compiled classes to test directory 
       - name : copy compiled classes to testresources directory 
         working-directory: ./src/poe
-        run: cp -t  "../../test/poe" Task.class Login.class POE.class
+        run: cp -t  "../../test/poe" Tasks.class Login.class POE.class
         
         #copy compiled tests 
       - name : copy compiled Test classes to testresources directory 
         working-directory: ./test/poe
-        run: cp -t  "../../testresources/" TaskTest.class LoginTest.class POE.class 
+        run: cp -t  "../../testresources/" TasksTest.class LoginTest.class POE.class 
         
         # list contents or directory
       - name: List contents test package
         working-directory: ./test/poe
         run: ls
         
-        #run Task Class tests and output report 
-      - name: run Task Class tests and create report 
+        #run Tasks Class tests and output report 
+      - name: run Tasks Class tests and create report 
         working-directory: ./test
-        run: java  "../testresources/junit-platform-suite-commons-1.8.2.jar" -cp "."  --select-class poe.TaskTest
+        run: java  "../testresources/junit-platform-suite-commons-1.8.2.jar" -cp "."  --select-class poe.TasksTest
 
 
 
